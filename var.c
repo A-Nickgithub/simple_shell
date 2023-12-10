@@ -84,7 +84,7 @@ int replace_alias(inform_t *inform)
 		if (!node)
 			return (0);
 		free(inform->argv[0]);
-		p = _strchr(node->str, '=');
+		p = _strchr(node->strg, '=');
 		if (!p)
 			return (0);
 		p = _strdup(p + 1);
@@ -126,7 +126,7 @@ int replace_var(inform_t *inform)
 		if (node)
 		{
 			replace_string(&(inform->argv[a]),
-				_strdup(_strchr(node->str, '=') + 1));
+				_strdup(_strchr(node->strg, '=') + 1));
 			continue;
 		}
 		replace_string(&inform->argv[a], _strdup(""));

@@ -25,7 +25,7 @@ char *_getenv(inform_t *inform, const char *name)
 
 	while (node)
 	{
-		p = starts_with(node->str, name);
+		p = starts_with(node->strg, name);
 		if (p && *p)
 			return (p);
 		node = node->next;
@@ -34,12 +34,12 @@ char *_getenv(inform_t *inform, const char *name)
 }
 
 /**
- * _setenv - Initialize a new environment variable,
+ * my_setenv - Initialize a new environment variable,
  *             or modify an existing one
  * @inform: Structure containing potential arguments
  *  Return: Always 0
  */
-int _setenv(inform_t *inform)
+int my_setenv(inform_t *inform)
 {
 	if (inform->argc != 3)
 	{
@@ -52,11 +52,11 @@ int _setenv(inform_t *inform)
 }
 
 /**
- * _unsetenv - Remove an environment variable
+ * my_unsetenv - Remove an environment variable
  * @inform: Structure containing potential arguments.
  *  Return: Always 0
  */
-int _unsetenv(inform_t *inform)
+int my_unsetenv(inform_t *inform)
 {
 	int n;
 

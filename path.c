@@ -6,7 +6,7 @@
  * @path: path to the file
  * Return: 1 if true, 0 otherwise
  */
-int is_exec(info_t *inform, char *path)
+int is_exec(inform_t *inform, char *path)
 {
 	struct stat st;
 
@@ -47,7 +47,7 @@ char *dup_chara(char *pathstrg, int start, int stop)
  * @cmd: the cmd to find
  * Return: full path of cmd if found or NULL
  */
-char *find_path(info_t *inform, char *pathstrg, char *cmd)
+char *find_path(inform_t *inform, char *pathstrg, char *cmd)
 {
 	int n = 0, curr_pos = 0;
 	char *path;

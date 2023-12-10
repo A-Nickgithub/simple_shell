@@ -65,7 +65,7 @@ char *_strcat(char *destination, char *source)
 	while (*destination)
 		destination++;
 	while (*source)
-		*destinstion++ = *source++;
+		*destination++ = *source++;
 	*destination = *source;
 	return (ret);
 }

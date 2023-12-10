@@ -6,7 +6,7 @@
  *  Return: exits with a given exit status
  *         (0) if inform.argv[0] != "exit"
  */
-int _myex(inform_t *inform)
+int myexi(inform_t *inform)
 {
 	int ex;
 
@@ -46,7 +46,7 @@ int _cd(inform_t *inform)
 		direct = _getenv(inform, "HOME=");
 		if (!direct)
 			chdirect_ret =
-				chdirect((direct = _getenv(info, "PWD=")) ? direct : "/");
+				chdir((direct = _getenv(inform, "PWD=")) ? direct : "/");
 		else
 			chdirect_ret = chdirect(direct);
 	}
@@ -60,7 +60,7 @@ int _cd(inform_t *inform)
 		}
 		_puts(_getenv(inform, "OLDPWD=")), _putchar('\n');
 		chdirect_ret =
-			chdirect((direct = _getenv(info, "OLDPWD=")) ? direct : "/");
+			chdirect((direct = _getenv(inform, "OLDPWD=")) ? direct : "/");
 	}
 	else
 		chdirect_ret = chdirect(inform->argv[1]);

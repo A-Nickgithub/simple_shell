@@ -1,4 +1,3 @@
-shell.h
 #ifndef _SHELL_H_
 #define _SHELL_H_
 
@@ -37,8 +36,8 @@ extern char **environ;
  */
 typedef struct liststr
 {
-	int num;
-	char *str;
+	int numb;
+	char *strg;
 	struct liststr *next;
 } list_t;
 
@@ -143,19 +142,19 @@ char *_strchr(char *, char);
 char **strtow(char *, char *);
 char **strtow2(char *, char);
 
-/* toem_realloc.c */
+/* toem_reallocate.c */
 char *_memset(char *, char, unsigned int);
 void free_string(char **);
 void *_realloc(void *, unsigned int, unsigned int);
 
 /* mem.c */
-int free(void **);
+int my_free(void **);
 
 /* atoi.c */
 int interact(inform_t *);
 int is_delm(char, char *);
 int _alpha(int);
-int _atoi(char *);
+int my_atoi(char *);
 
 /* errors2.c */
 int _erratoi(char *);
@@ -165,23 +164,23 @@ char *convert_number(long int, int, int);
 void remove_comments(char *);
 
 /* builtin.c */
-int _myex(inform_t *);
+int myexi(inform_t *);
 int _cd(inform_t *);
 int _help(inform_t *);
 
 /* builtin2.c */
 int _history(inform_t *);
-int set_alias(inform_t *);
-int set2_alias(inform_t * char *);
+int set_alias(inform_t *inform, char *strg);
+int set2_alias(inform_t *inform, char *strg);
 int prt_alias(list_t *node);
 int mainalias(inform_t *);
 
 /*get_line.c */
 ssize_t get_input(inform_t *);
-int _getline(info_t *, char **, size_t *);
+int _getline(inform_t *, char **, size_t *);
 void sigintHandler(int);
-ssize_t input_buff(inform_t * char ** size_t *);
-ssize_t read_buff(inform_t * char * size_t *);
+ssize_t input_buff(inform_t *, char **, size_t *);
+ssize_t read_buff(inform_t *, char *, size_t *);
 
 /* get_info.c */
 void clear_inform(inform_t *);

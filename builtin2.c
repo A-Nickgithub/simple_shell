@@ -30,7 +30,7 @@ int set_alias(inform_t *inform, char *strg)
 	y = *p;
 	*p = 0;
 	r = delete_node_at_index(&(inform->alias),
-		get_node_index(inform->alias, node_starts_with(inform->alias, strg, -1)));
+		node_index(inform->alias, node_starts(inform->alias, strg, -1)));
 	*p = y;
 	return (r);
 }
@@ -106,7 +106,7 @@ int _mainalias(inform_t *inform)
 		if (p)
 			set2_alias(inform, inform->argv[n]);
 		else
-			prt_alias(node_starts_with(inform->alias, inform->argv[n], '='));
+			prt_alias(node_starts(inform->alias, inform->argv[n], '='));
 	}
 
 	return (0);

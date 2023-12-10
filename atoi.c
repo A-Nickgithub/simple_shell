@@ -2,12 +2,12 @@
 
 /**
  * interact - returns true if shell is interactive mode
- * @info: struct address
+ * @inform struct address
  * Return: 1 if interactive mode, 0 otherwise
  */
-int interact(info_t *info)
+int interact(inform_t *inform)
 {
-	return (isatty(STDIN_FILENO) && info->readfd <= 2);
+	return (isatty(STDIN_FILENO) && inform->readfd <= 2);
 }
 
 /**
@@ -39,12 +39,12 @@ int _alpha(int y)
 }
 
 /**
- *atoi - converts a string to int
+ *my_atoi - converts a string to int
  *@s: str to be converted
  *Return: 0 if no numbers in str, converted number otherwise
  */
 
-int atoi(char *s)
+int my_atoi(char *s)
 {
 	int z, sign = 1, flag = 0, output;
 	unsigned int result = 0;

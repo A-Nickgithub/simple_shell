@@ -1,28 +1,28 @@
 #include "shell.h"
 
 /**
- * get_env - returns the string array copy of our environ
+ * get_environment - returns the string array copy of our environ
  * @inform: Structure containing potential arguments.
  * Return: Always 0
  */
-char **get_env(inform_t *inform)
+char **get_envronment(inform_t *inform)
 {
-	if (!inform->environ || info->env_changed)
+	if (!inform->environ || inform->env_changed)
 	{
-		info->environ = list_to_strings(info->env);
-		info->env_changed = 0;
+		inform->environ = list_to_strg(inform->env);
+		inform->env_changed = 0;
 	}
 
-	return (info->environ);
+	return (inform->environ);
 }
 
 /**
- * _unsetenviron - Remove an environment variable
+ * _unsetenv - Remove an environment variable
  * @inform: Structure containing potential arguments
  *  Return: 1 on delete, 0 otherwise
  * @var: the string env var property
  */
-int _unsetenviron(inform_t *inform, char *var)
+int _unsetenv(inform_t *inform, char *var)
 {
 	list_t *node = inform->env;
 	size_t n = 0;
@@ -33,7 +33,7 @@ int _unsetenviron(inform_t *inform, char *var)
 
 	while (node)
 	{
-		p = starts_with(node->str, var);
+		p = starts_with(node->strg, var);
 		if (p && *p == '=')
 		{
 			inform->env_changed = delete_node_at_index(&(inform->env), n);
@@ -48,13 +48,13 @@ int _unsetenviron(inform_t *inform, char *var)
 }
 
 /**
- * _setenviron - Initialize a new environment variable
+ * _setenv - Initialize a new environment variable
  * @inform: Structure containing potential arguments.
  * @var: the string env var property
  * @value: the string env var value
  *  Return: Always 0
  */
-int _setenviron(inform_t *inform, char *var, char *value)
+int _setenv(inform_t *inform, char *var, char *value)
 {
 	char *buff = NULL;
 	list_t *node;
@@ -72,11 +72,11 @@ int _setenviron(inform_t *inform, char *var, char *value)
 	node = inform->env;
 	while (node)
 	{
-		p = starts_with(node->str, var);
+		p = starts_with(node->strg, var);
 		if (p && *p == '=')
 		{
-			free(node->str);
-			node->str = buff;
+			free(node->strg);
+			node->strg = buff;
 			inform->env_changed = 1;
 			return (0);
 		}

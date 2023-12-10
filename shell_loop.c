@@ -13,7 +13,7 @@ int hsh(inform_t *inform, char **av)
 
 	while (c != -1 && builtin_ret != -2)
 	{
-		clear_info(inform);
+		clear_inform(inform);
 		if (interact(inform))
 			_puts("$ ");
 		_eputchar(BUF_FLUSH);
@@ -29,7 +29,7 @@ int hsh(inform_t *inform, char **av)
 			_putchar('\n');
 		free_inform(inform, 0);
 	}
-	write_history(inform);
+	create_history(inform);
 	free_inform(inform, 1);
 	if (!interact(inform) && inform->status)
 		exit(inform->status);
@@ -53,8 +53,9 @@ int hsh(inform_t *inform, char **av)
 int find_builtin(inform_t *inform)
 {
 	int n, built_in_ret = -1;
-	builtin_table builtintbl[] = {
-		{"exit", _myex},
+	builtin_table builtintbl[] =
+	{
+		{"exit", myexi},
 		{"env", _env},
 		{"help", _help},
 		{"history", _history},
@@ -133,9 +134,9 @@ void fork_cmd(inform_t *inform)
 	}
 	if (child_pid == 0)
 	{
-		if (execve(inform->path, inform->argv, get_env(inform)) == -1)
+		if (execve(inform->path, inform->argv, getenv(inform)) == -1)
 		{
-			free_info(inform, 1);
+			free_inform(inform, 1);
 			if (errno == EACCES)
 				exit(126);
 			exit(1);
