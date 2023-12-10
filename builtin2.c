@@ -80,11 +80,11 @@ int prt_alias(list_t *node)
 }
 
 /**
- * _mainalias - mimics the alias builtin
+ * mainalias - mimics the alias builtin
  * @inform: Structure containing potential arguments.
  *  Return: Always 0
  */
-int _mainalias(inform_t *inform)
+int mainalias(inform_t *inform)
 {
 	int n = 0;
 	char *p = NULL;

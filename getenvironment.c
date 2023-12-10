@@ -5,7 +5,7 @@
  * @inform: Structure containing potential arguments.
  * Return: Always 0
  */
-char **get_envronment(inform_t *inform)
+char **get_environment(inform_t *inform)
 {
 	if (!inform->environ || inform->env_changed)
 	{

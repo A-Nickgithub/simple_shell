@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _myex - exits the shell
+ * myexi - exits the shell
  * @inform: Struct containing potential arguments.
  *  Return: exits with a given exit status
  *         (0) if inform.argv[0] != "exit"
@@ -45,10 +45,11 @@ int _cd(inform_t *inform)
 	{
 		direct = _getenv(inform, "HOME=");
 		if (!direct)
-			chdirect_ret =
-				chdir((direct = _getenv(inform, "PWD=")) ? direct : "/");
+
+		chdirect_ret =
+			chdir((direct = _getenv(inform, "PWD=")) ? direct : "/");
 		else
-			chdirect_ret = chdirect(direct);
+			chdirect_ret = chdir(direct);
 	}
 	else if (_strcmp(inform->argv[1], "-") == 0)
 	{
@@ -60,10 +61,10 @@ int _cd(inform_t *inform)
 		}
 		_puts(_getenv(inform, "OLDPWD=")), _putchar('\n');
 		chdirect_ret =
-			chdirect((direct = _getenv(inform, "OLDPWD=")) ? direct : "/");
+			chdir((direct = _getenv(inform, "OLDPWD=")) ? direct : "/");
 	}
 	else
-		chdirect_ret = chdirect(inform->argv[1]);
+		chdirect_ret = chdir(inform->argv[1]);
 	if (chdirect_ret == -1)
 	{
 		print_error(inform, "can't cd to ");

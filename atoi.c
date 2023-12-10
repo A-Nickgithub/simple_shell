@@ -2,7 +2,7 @@
 
 /**
  * interact - returns true if shell is interactive mode
- * @inform struct address
+ * @inform: struct address
  * Return: 1 if interactive mode, 0 otherwise
  */
 int interact(inform_t *inform)

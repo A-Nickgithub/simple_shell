@@ -105,8 +105,9 @@ typedef struct builtin
 int hsh(inform_t *, char **);
 int find_builtin(inform_t *);
 void find_cmd(inform_t *);
+int is_exec(inform_t *inform, char *path);
 void fork_cmd(inform_t *);
-
+int handle_set_unset_env(inform_t *inform __attribute__((unused)), int setenv_flag);
 /* path.c */
 int is_cmd(inform_t *, char *);
 char *dup_chara(char *, int, int);

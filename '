@@ -44,21 +44,19 @@ int hsh(inform_t *inform, char **av)
 /**
   *handle_set_unset_env- handles
   *@inform: informs
-  *@setenv_flag: flags
+  *@flag: flags
   *Return: int
   */
-int handle_set_unset_env(inform_t *inform __attribute__((unused)),
-		int setenv_flag)
+int handle_set_unset_env(inform_t *inform __attribute__((unused)), int setenv_flag)
 {
-	if (setenv_flag)
-	{
-		return (0);
-	}
-	else
-	{
-		return (0);
-	}
+    if (setenv_flag) {
+        return 0;
+    } else {
+        return 0;
+    }
 }
+
+
 /**
  * find_builtin - finds a builtin command
  * @inform: the parameter & return info struct
@@ -140,33 +138,27 @@ void find_cmd(inform_t *inform)
  */
 void fork_cmd(inform_t *inform)
 {
-	pid_t child_pid;
+    pid_t child_pid;
 
-	child_pid = fork();
-	if (child_pid == -1)
-	{
-		perror("Error:");
-		return;
-	}
+    child_pid = fork();
+    if (child_pid == -1) {
+        perror("Error:");
+        return;
+    }
 
-	if (child_pid == 0)
-	{
-		if (execve(inform->path, inform->argv, environ) == -1)
-		{
-			free_inform(inform, 1);
-			if (errno == EACCES)
-				exit(126);
-			exit(1);
-		}
-	}
-	else
-	{
-		wait(&(inform->status));
-		if (WIFEXITED(inform->status))
-		{
-			inform->status = WEXITSTATUS(inform->status);
-			if (inform->status == 126)
-				print_error(inform, "Permission denied\n");
-		}
-	}
+    if (child_pid == 0) {
+        if (execve(inform->path, inform->argv, environ) == -1) {
+            free_inform(inform, 1);
+            if (errno == EACCES)
+                exit(126);
+            exit(1);
+        }
+    } else {
+        wait(&(inform->status));
+        if (WIFEXITED(inform->status)) {
+            inform->status = WEXITSTATUS(inform->status);
+            if (inform->status == 126)
+                print_error(inform, "Permission denied\n");
+        }
+    }
 }
