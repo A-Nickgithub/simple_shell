@@ -1,21 +1,20 @@
-#include "shell.h"
+#include "shelly.h"
 
 /**
-* free_buffers - frees buffers
+* freebuffers - frees buffers
 * @buf: buffer to be freed
-*
 * Return: no return
 */
-void free_buffers(char **buf)
+void freebuffers(char **buf)
 {
-	int i = 0;
+	int a = 0;
 
 	if (!buf || buf == NULL)
 		return;
-	while (buf[i])
+	while (buf[a])
 	{
-		free(buf[i]);
-		i++;
+		free(buf[a]);
+		a++;
 	}
 	free(buf);
 }

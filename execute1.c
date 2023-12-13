@@ -1,15 +1,15 @@
-#include "shell.h"
+#include "shelly.h"
 
 /**
- * execution - executes commands entered by users
+ * exec - executes commands entered by users
  *@cp: command
  *@cmd:vector array of pointers to commands
  * Return: 0
  */
-void execution(char *cp, char **cmd)
+void exec(char *cp, char **cmd)
 {
 	pid_t child_pid;
-	int status;
+	int stat;
 	char **env = environ;
 
 	child_pid = fork();
@@ -24,5 +24,5 @@ void execution(char *cp, char **cmd)
 		exit(98);
 	}
 	else
-		wait(&status);
+		wait(&stat);
 }

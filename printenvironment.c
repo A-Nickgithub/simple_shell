@@ -1,19 +1,18 @@
-#include "shell.h"
+#include "shelly.h"
 
 /**
-* print_env - prints the environment string to stdout
-*
+* printenv - prints the environment string to stdout
 * Return: 0
 */
-void print_env(void)
+void printenv(void)
 {
-	int x = 0;
+	int y = 0;
 	char **env = environ;
 
-	while (env[x])
+	while (env[y])
 	{
-		write(STDOUT_FILENO, (const void *)env[x], _strlen(env[x]));
+		write(STDOUT_FILENO, (const void *)env[y], _strlen(env[y]));
 		write(STDOUT_FILENO, "\n", 1);
-		x++;
+		y++;
 	}
 }

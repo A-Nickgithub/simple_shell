@@ -1,17 +1,16 @@
-#include "shell.h"
+#include "shelly.h"
 
 /**
-* append_path - adds path to command
+* append - adds path to command
 * @path: path of command
 * @command: user entered command
-*
 * Return: buffer containing command with path on success
 * NULL on failure
 */
-char *append_path(char *path, char *command)
+char *append(char *path, char *command)
 {
 	char *buf;
-	size_t i = 0, j = 0;
+	size_t a = 0, n = 0;
 
 	if (command == 0)
 		command = "";
@@ -23,22 +22,22 @@ char *append_path(char *path, char *command)
 	if (!buf)
 		return (NULL);
 
-	while (path[i])
+	while (path[a])
 	{
-		buf[i] = path[i];
-		i++;
+		buf[a] = path[a];
+		a++;
 	}
 
-	if (path[i - 1] != '/')
+	if (path[a - 1] != '/')
 	{
-		buf[i] = '/';
-		i++;
+		buf[a] = '/';
+		a++;
 	}
-	while (command[j])
+	while (command[n])
 	{
-		buf[i + j] = command[j];
-		j++;
+		buf[a + n] = command[j];
+		n++;
 	}
-	buf[i + j] = '\0';
+	buf[a + n] = '\0';
 	return (buf);
 }
