@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+
+=======
+>>>>>>> b42e1372a2af00bb21b43f55340b1587320985aa
 #ifndef _SHELL_H_
 #define _SHELL_H_
 
