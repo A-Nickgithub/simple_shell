@@ -40,7 +40,7 @@ void set_inform(inform_t *inform, char **av)
 		inform->argc = n;
 
 		replace_alias(inform);
-		replace_vars(inform);
+		replace_var(inform);
 	}
 }
 
@@ -51,12 +51,12 @@ void set_inform(inform_t *inform, char **av)
  */
 void free_inform(inform_t *inform, int all)
 {
-	ffree(inform->argv);
+	free_string(inform->argv);
 	inform->argv = NULL;
 	inform->path = NULL;
 	if (all)
 	{
-		if (!inform->cmd_buff)
+		if (!inform->cmd_buf)
 			free(inform->arg);
 		if (inform->env)
 			free_list(&(inform->env));
@@ -64,9 +64,9 @@ void free_inform(inform_t *inform, int all)
 			free_list(&(inform->history));
 		if (inform->alias)
 			free_list(&(inform->alias));
-		ffree(inform->environ);
+		free_string(inform->environ);
 			inform->environ = NULL;
-		bfree((void **)inform->cmd_buff);
+		my_free((void **)inform->cmd_buf);
 		if (inform->readfd > 2)
 			close(inform->readfd);
 		_putchar(BUF_FLUSH);

@@ -35,7 +35,7 @@ ssize_t input_buff(inform_t *inform, char **buff, size_t *len)
 			build_history_list(inform, *buff, inform->histcount++);
 			{
 				*len = c;
-				inform->cmd_buff = buff;
+				inform->cmd_buf = buff;
 			}
 		}
 	}
@@ -75,7 +75,7 @@ ssize_t get_input(inform_t *inform)
 		if (n >= len)
 		{
 			n = len = 0;
-			inform->cmd_buff_type = CMD_NORM;
+			inform->cmd_buf_type = CMD_NORM;
 		}
 
 		*buff_p = p;
@@ -99,7 +99,7 @@ ssize_t read_buff(inform_t *inform, char *buff, size_t *n)
 
 	if (*n)
 		return (0);
-	c = read(inform->readfiledes, buff, READ_BUF_SIZE);
+	c = read(inform->readfd, buff, READ_BUF_SIZE);
 	if (c >= 0)
 		*n = c;
 	return (c);

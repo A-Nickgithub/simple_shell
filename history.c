@@ -44,7 +44,7 @@ int create_history(inform_t *inform)
 		return (-1);
 	for (node = inform->history; node; node = node->next)
 	{
-		_putsfd(node->str, filedes);
+		_putsfd(node->strg, filedes);
 		_putfd('\n', filedes);
 	}
 	_putfd(BUF_FLUSH, filedes);
@@ -133,8 +133,8 @@ int renumber_history(inform_t *inform)
 
 	while (node)
 	{
-		node->num = n++;
+		node->numb = a++;
 		node = node->next;
 	}
-	return (inform->histcount = n);
+	return (inform->histcount = a);
 }
